@@ -5,3 +5,8 @@ button.AppButton {
   box-shadow: 0 3px 6px;
   padding: 7px 10px;
 }
+
+button.AppButton img {
+  margin: 0 2px;
+  padding: 0 1px;
+}
