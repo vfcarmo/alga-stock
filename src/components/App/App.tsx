@@ -10,7 +10,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <TestComponent name="Mundo" />
-        <ClassComponent name="Mundo" />
+        {/* <ClassComponent name="Mundo" /> */}
         <a
           className="App-link"
           href="https://reactjs.org"
