@@ -29,6 +29,11 @@ function App() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        <ul>
+          {["Vitor", "Karen", "Mariana"].map((name, index) => {
+            return <li key={index}>{name}</li>;
+          })}
+        </ul>
         <Button
           onClick={() => window.alert(name)}
           appendIcon={<TestComponent />}
