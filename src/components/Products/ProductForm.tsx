@@ -3,6 +3,7 @@ import Form from "../../shared/Form";
 import Input from "../../shared/Input";
 import Button from "../../shared/Button";
 import { Product } from "../../shared/Table/Table.mockdata";
+import './ProductForm.scss'
 
 declare interface InitialFormState {
     id?: number
@@ -80,6 +81,11 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
         setForm(initialFormState)
     }
 
+    const handleFormReset = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        setForm(initialFormState)
+    }
+
     return (
         <Form title="Product from" onSubmit={handleFormSubmit}>
             <Input
@@ -111,7 +117,8 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
                 required
                 onChange={handleInputChange}
             ></Input>
-            <Button>Submit</Button>
+            <Button>{form.id ? 'Update' : 'Create'}</Button>
+            <Button onClick={() => handleFormReset}>Reset</Button>
         </Form>
     );
 };
