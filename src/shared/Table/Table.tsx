@@ -34,7 +34,8 @@ const Table: React.FC<TableProps> = (props) => {
               {header.value}
             </th>
           ))}
-          {props.enableAction ? <th>Actions</th> : null}
+          {props.enableAction
+            && <th className="right">Actions</th>}
         </tr>
       </thead>
       <tbody>
@@ -51,13 +52,14 @@ const Table: React.FC<TableProps> = (props) => {
                   </td>
                 ) : null
               )}
-              {props.enableAction ? (
-                <td>
-                  <Button onClick={() => props.onDetail}>Detail</Button>
-                  <Button onClick={() => props.onEdit}>Edit</Button>
-                  <Button onClick={() => props.onDelete}>Delete</Button>
-                </td>
-              ) : null}
+              {props.enableAction
+                && (
+                  <td className="actions right">
+                    {props.onDetail && <Button onClick={() => props.onDetail && props.onDetail(row)}>Detail</Button>}
+                    {props.onEdit && <Button onClick={() => props.onEdit && props.onEdit(row)}>Edit</Button>}
+                    {props.onDelete && <Button onClick={() => props.onDelete && props.onDelete(row)}>Delete</Button>}
+                  </td>
+                )}
             </tr>
           );
         })}

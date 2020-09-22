@@ -38,7 +38,7 @@ function App() {
     <div className="App">
       <Header title="AlgaStock" />
       <Container>
-        <Table headers={headers} data={products} />
+        <Table headers={headers} data={products} enableAction={true} onDetail={console.log} onEdit={console.log} onDelete={console.log} />
         <ProductForm
           form={updatingProduct}
           onSubmit={handleProductSubmit}
