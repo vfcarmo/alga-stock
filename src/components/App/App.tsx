@@ -33,6 +33,7 @@ function App() {
     try {
       await createSingleProduct(product)
       fetchData();
+      Swal.fire('Created!', 'The product has been created.', 'success')
     } catch (error) {
       Swal.fire('Oops', error.message, 'error')
     }
@@ -42,6 +43,7 @@ function App() {
     try {
       await updateSingleProduct(newProduct)
       fetchData()
+      Swal.fire('Updated!', 'The product has been updated.', 'success')
     } catch (error) {
       Swal.fire('Oops', error.message, 'error')
     }
