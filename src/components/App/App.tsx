@@ -9,7 +9,7 @@ import ProductForm, { ProductCreator } from "../Products/ProductForm";
 import { getAllProducts } from "../../services/Products.services";
 
 const headers: TableHeader[] = [
-  { key: "id", value: "#" },
+  { key: "_id", value: "#" },
   { key: "name", value: "Product" },
   { key: "price", value: "Price", right: true },
   { key: "stock", value: "Available Stock", right: true },
@@ -32,14 +32,14 @@ function App() {
     setProducts([
       ...products,
       {
-        id: products.length + 1,
+        _id: String(products.length + 1),
         ...product
       }
     ])
   }
 
   const handleProductUpdate = (newProduct: Product) => {
-    setProducts(products.map(product => product.id === newProduct.id ? newProduct : product))
+    setProducts(products.map(product => product._id === newProduct._id ? newProduct : product))
 
     setUpdatingProduct(undefined)
   }
@@ -56,8 +56,8 @@ function App() {
     setUpdatingProduct(product)
   }
 
-  const deleteProduct = (id: number) => {
-    setProducts(products.filter(product => product.id !== id))
+  const deleteProduct = (id: string) => {
+    setProducts(products.filter(product => product._id !== id))
   }
 
   const handleProductDelete = (product: Product) => {
@@ -71,7 +71,7 @@ function App() {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteProduct(product.id)
+        deleteProduct(product._id)
         Swal.fire('Deleted!', 'The product has been deleted.', 'success')
       }
     })
