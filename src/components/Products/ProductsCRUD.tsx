@@ -4,8 +4,8 @@ import Swal from 'sweetalert2'
 import Table, { TableHeader } from "../../shared/Table";
 import { Product } from "../../shared/Table/Table.mockdata";
 import ProductForm, { ProductCreator } from "../Products/ProductForm";
-import { getAllProducts, createSingleProduct, deleteSingleProduct, updateSingleProduct } from "../../services/Products.services";
-import { insertNewProduct, getProducts } from '../../redux/Products/Products.actions';
+import * as ProductAction from '../../redux/Products/Products.actions';
+import { RootState } from '../../redux';
 
 const headers: TableHeader[] = [
     { key: "_id", value: "#" },
@@ -22,12 +22,11 @@ const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
 
     const dispatch = useDispatch()
 
-    // const [products, setProducts] = useState<Product[]>([])
     const [updatingProduct, setUpdatingProduct] = useState<Product | undefined>()
 
     async function fetchData() {
         try {
-            await dispatch(getProducts())
+            await dispatch(ProductAction.getProducts())
         } catch (error) {
             Swal.fire('Oops', error.message, 'error')
         }
@@ -39,9 +38,7 @@ const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
 
     const handleProductSubmit = async (product: ProductCreator) => {
         try {
-            // await createSingleProduct(product)
-            dispatch(insertNewProduct(product))
-            fetchData();
+            await dispatch(ProductAction.insertNewProduct(product))
             Swal.fire('Created!', 'The product has been created.', 'success')
         } catch (error) {
             Swal.fire('Oops', error.message, 'error')
@@ -50,8 +47,7 @@ const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
 
     const handleProductUpdate = async (newProduct: Product) => {
         try {
-            await updateSingleProduct(newProduct)
-            fetchData()
+            await dispatch(ProductAction.updateProduct(newProduct))
             Swal.fire('Updated!', 'The product has been updated.', 'success')
         } catch (error) {
             Swal.fire('Oops', error.message, 'error')
@@ -73,8 +69,7 @@ const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
 
     const deleteProduct = async (id: string) => {
         try {
-            await deleteSingleProduct(id)
-            fetchData()
+            await dispatch(ProductAction.deleteProduct(id))
             Swal.fire('Deleted!', 'The product has been deleted.', 'success')
         } catch (error) {
             Swal.fire('Oops', error.message, 'error')
@@ -110,7 +105,7 @@ const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
     </>
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootState) => ({
     products: state.products
 })
 
