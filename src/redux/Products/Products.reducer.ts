@@ -12,6 +12,8 @@ export default function (state = Products, action: Action): Product[] {
         _id: String(state.length + 1),
         ...action.payload
       }];
+    case "FETCH_PRODUCTS":
+      return action.payload
     default:
       return state;
   }
