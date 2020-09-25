@@ -26,9 +26,11 @@ const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
     const [updatingProduct, setUpdatingProduct] = useState<Product | undefined>()
 
     async function fetchData() {
-        // const _products = await getAllProducts()
-        // setProducts(_products)
-        dispatch(getProducts())
+        try {
+            await dispatch(getProducts())
+        } catch (error) {
+            Swal.fire('Oops', error.message, 'error')
+        }
     }
 
     useEffect(() => {
