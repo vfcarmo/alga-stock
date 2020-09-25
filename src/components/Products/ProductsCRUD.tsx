@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import Swal from 'sweetalert2'
 import Table, { TableHeader } from "../../shared/Table";
 import { Product } from "../../shared/Table/Table.mockdata";
 import ProductForm, { ProductCreator } from "../Products/ProductForm";
 import { getAllProducts, createSingleProduct, deleteSingleProduct, updateSingleProduct } from "../../services/Products.services";
+import { insertNewProduct } from '../../redux/Products/Products.actions';
 
 const headers: TableHeader[] = [
     { key: "_id", value: "#" },
@@ -18,6 +19,8 @@ declare interface ProductsCRUDProps {
 }
 
 const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
+
+    const dispatch = useDispatch()
 
     // const [products, setProducts] = useState<Product[]>([])
     const [updatingProduct, setUpdatingProduct] = useState<Product | undefined>()
@@ -33,7 +36,8 @@ const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
 
     const handleProductSubmit = async (product: ProductCreator) => {
         try {
-            await createSingleProduct(product)
+            // await createSingleProduct(product)
+            dispatch(insertNewProduct(product))
             fetchData();
             Swal.fire('Created!', 'The product has been created.', 'success')
         } catch (error) {
