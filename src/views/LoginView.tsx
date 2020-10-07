@@ -2,7 +2,7 @@ import React from 'react'
 
 import LoginForm from '../components/Authentication/LoginForm'
 
-const LoginView: React.FC = () => {
+const LoginView = () => {
     return <div style={{
         minHeight: '100vh',
         display: 'flex',

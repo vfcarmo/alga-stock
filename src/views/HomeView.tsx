@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import Container from '../shared/Container'
 import ProductsCRUD from '../components/Products/ProductsCRUD'
 
-const HomeView: React.FC = () => {
+const HomeView = () => {
     return <>
         <Header title="AlgaStock" />
         <Container>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const NotFoundView: React.FC = () => {
+const NotFoundView = () => {
     return <div style={{
         display: 'flex',
         justifyContent: 'center',

@@ -4,6 +4,7 @@ import "./App.css";
 import HomeView from "../../views/HomeView";
 import NotFoundView from "../../views/NotFoundView";
 import LoginView from "../../views/LoginView";
+import ProfileView from "../../views/ProfileView";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={HomeView} />
           <Route path="/login" exct component={LoginView} />
+          <Route path="/profile" exct component={ProfileView} />
           <Route component={NotFoundView} />
         </Switch>
       </BrowserRouter>
