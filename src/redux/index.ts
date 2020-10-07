@@ -3,9 +3,11 @@ import thunk, { ThunkAction } from 'redux-thunk'
 import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import Products from "./Products/Products.reducer";
+import Authentication from "./Authentication/Authentication.reducer";
 
 const reducers = combineReducers({
   products: Products,
+  authentication: Authentication
 });
 
 const persistedReducer = persistReducer({

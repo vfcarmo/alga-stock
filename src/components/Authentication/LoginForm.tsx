@@ -4,6 +4,9 @@ import Input from '../../shared/Input'
 import Button from '../../shared/Button'
 
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
+import { useDispatch } from 'react-redux'
+import { login } from '../../redux/Authentication/Authentication.actions'
 
 const initialFormState = {
     user: '',
@@ -12,6 +15,7 @@ const initialFormState = {
 
 
 const LoginForm: React.FC = () => {
+    const dispatch = useDispatch()
     const [form, setForm] = useState(initialFormState)
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,9 +26,17 @@ const LoginForm: React.FC = () => {
         })
     }
 
-    const handleLogin = () => {
-        console.table(form)
-        setForm(initialFormState)
+    const handleLogin = async () => {
+        try {
+            await dispatch(login(form))
+
+        } catch (error) {
+            Swal.fire(
+                'Error',
+                error.response?.data?.message || error.message,
+                'error'
+            )
+        }
     }
     return <Form title="Login - AlgaStock" onSubmit={handleLogin}>
         <Input label="User" name="user" value={form.user} onChange={handleInputChange} placeholder="E.g.: your_user_name123" />
