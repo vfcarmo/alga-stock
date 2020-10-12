@@ -3,7 +3,6 @@ import Form from '../../shared/Form'
 import Input from '../../shared/Input'
 import Button from '../../shared/Button'
 
-import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { useDispatch } from 'react-redux'
 import { login } from '../../redux/Authentication/Authentication.actions'
@@ -29,7 +28,6 @@ const LoginForm: React.FC = () => {
     const handleLogin = async () => {
         try {
             await dispatch(login(form))
-
         } catch (error) {
             Swal.fire(
                 'Error',
