@@ -1,4 +1,4 @@
-import React, { Component, FC } from 'react'
+import React, { FC } from 'react'
 import { Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux'
