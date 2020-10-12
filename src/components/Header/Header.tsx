@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import "./Header.css";
 import { Product } from "../../shared/Table/Table.mockdata";
 import { User } from "../../services/Authentication.services";
-import { logout, login } from "../../redux/Authentication/Authentication.actions";
+import { logout } from "../../redux/Authentication/Authentication.actions";
 import Swal from "sweetalert2";
 
 declare interface HeaderProps {
