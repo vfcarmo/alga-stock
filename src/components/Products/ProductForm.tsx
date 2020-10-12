@@ -125,4 +125,4 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
     );
 };
 
-export default withPermission(['customer', 'admin'], '/login')(ProductForm);
+export default withPermission(['customer', 'admin'], '/')(ProductForm);

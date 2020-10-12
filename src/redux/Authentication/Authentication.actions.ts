@@ -12,4 +12,8 @@ export const login = ({ user, password }: Credentials): Thunk => async (dispatch
         type: 'AUTHENTICATION_LOGIN',
         payload: loggedInUser
     })
-}  
+}
+
+export const logout = () => ({
+    type: 'AUTHENTICATION_LOGOUT'
+})
