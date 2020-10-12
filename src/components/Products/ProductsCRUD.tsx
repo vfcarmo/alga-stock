@@ -80,6 +80,7 @@ const ProductsCRUD: React.FC<ProductsCRUDProps> = (props) => {
 
     return <>
         <Table headers={headers} data={props.products} enableAction
+            itemsPerPage={3}
             onDetail={handleProductDetail}
             onEdit={setUpdatingProduct}
             onDelete={handleProductDelete} />
