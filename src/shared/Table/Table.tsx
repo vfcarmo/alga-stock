@@ -5,7 +5,6 @@ import organizeData from "../../utils/organizeDataForTable";
 import paginate from "../../utils/paginate";
 import "./Table.scss";
 import Button from "../Button";
-import { truncate } from "fs";
 
 export interface TableHeader {
   key: string;
@@ -83,7 +82,10 @@ const Table: React.FC<TableProps> = (props) => {
             .map((_, i) => {
               return <NavLink key={i}
                 activeClassName='selected'
-                to={`/products?page=${i + 1}`}
+                to={{
+                  pathname: location.pathname,
+                  search: `?page=${i + 1}`
+                }}
                 isActive={() => page === i + 1}>
                 {i + 1}
               </NavLink>

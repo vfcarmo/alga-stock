@@ -14,7 +14,7 @@ function App() {
           <Route path="/" exact>
             <Redirect to="/products" />
           </Route>
-          <Route path="/products" exact component={ProductsView} />
+          <Route path="/products/:id?" exact component={ProductsView} />
           <Route path="/login" exct component={LoginView} />
           <Route path="/profile" exct component={ProfileView} />
           <Route component={NotFoundView} />
